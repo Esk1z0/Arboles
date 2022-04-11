@@ -151,7 +151,24 @@ public class ArbolBinarioBusqueda {
 	// ------------------------------------------------------------------------
 	// TODO 3.3
 	public Alumno getCalificacionMaxima(int minimaMat, int maximaMat) {
-		return null;
+		Alumno result = getCalificacionMaximaRec(raiz, null, minimaMat, maximaMat);
+		return result;
+	}
+	private Alumno getCalificacionMaximaRec(NodoArbol nodo, Alumno aux,int minimaMat, int maximaMat){
+		if(nodo != null) {
+			if (nodo.getClave() > minimaMat && nodo.getClave() < maximaMat) {
+				if (nodo.getDato().getCalificacion() > aux.getCalificacion()) {
+					aux = nodo.getDato();
+				}
+				aux = getCalificacionMaximaRec(nodo.getIzquierdo(), aux, minimaMat, maximaMat);
+				aux = getCalificacionMaximaRec(nodo.getDerecho(), aux, minimaMat, maximaMat);
+			} else if (nodo.getClave() < minimaMat) {
+				aux = getCalificacionMaximaRec(nodo.getDerecho(), aux, minimaMat, maximaMat);
+			} else if (nodo.getClave() > maximaMat) {
+				aux = getCalificacionMaximaRec(nodo.getIzquierdo(), aux, minimaMat, maximaMat);
+			}
+		}
+		return aux;
 	}
 
 	// ------------------------------------------------------------------------
