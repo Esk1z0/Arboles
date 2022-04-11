@@ -212,7 +212,37 @@ public class ArbolBinarioBusqueda {
 	// ------------------------------------------------------------------------
 	// TODO 3.5
 	public boolean esEquilibrado() {
+		return esEquilibradoRec(raiz, true);
+	}
+	private boolean esEquilibradoRec(NodoArbol nodo, boolean result){
+		if(nodo != null) {
+			int alturaIzq = alturaArbolRec(nodo.getIzquierdo());
+			int alturaDer = alturaArbolRec(nodo.getDerecho());
+			if ((alturaIzq - alturaDer) >= -1 && (alturaIzq - alturaDer) <= 1) {
+				result = esEquilibradoRec(nodo.getIzquierdo(), result);
+				if (result) {
+					result = esEquilibradoRec(nodo.getDerecho(), result);
+				}
+			} else {
+				result = false;
+			}
+		}
 		return false;
+	}
+	private int alturaArbolRec(NodoArbol nodo){
+		int contador = 0;
+		if(nodo != null){
+			int izq = alturaArbolRec(nodo.getIzquierdo());
+			int der = alturaArbolRec(nodo.getDerecho());
+			if (izq > der){
+				contador = izq;
+			}
+			else{
+				contador = der;
+			}
+			contador++;
+		}
+		return contador;
 	}
 
 }
