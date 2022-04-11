@@ -225,10 +225,14 @@ public class Arbol {
     // ------------------------------------------------------------------------
     // TODO 2.4
     public void mostrarExpresion() {
-
+        if (raiz.getIzquierdo() != null) mostrarExpresionRec(raiz.getIzquierdo());
+        System.out.print(raiz.getDato());
+        if (raiz.getDerecho() != null)mostrarExpresionRec(raiz.getDerecho());
     }
     private void mostrarExpresionRec(NodoArbol nodo){
-
+        if (nodo.getIzquierdo() != null) mostrarExpresionRec(nodo.getIzquierdo());
+        System.out.print(nodo.getDato());
+        if (nodo.getDerecho() != null) mostrarExpresionRec(nodo.getDerecho());
     }
 
     // ------------------------------------------------------------------------
