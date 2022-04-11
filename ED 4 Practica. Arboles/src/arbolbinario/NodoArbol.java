@@ -2,15 +2,15 @@ package arbolbinario;
 
 class NodoArbol {
 
-    private int dato;
+    private char dato;
     private NodoArbol izquierdo, derecho;
 
-    public NodoArbol(int dato) {
+    public NodoArbol(char dato) {
         this.dato = dato;
         this.izquierdo = this.derecho = null;
     }
 
-    public NodoArbol(int dato, NodoArbol izquierdo, NodoArbol derecho) {
+    public NodoArbol(char dato, NodoArbol izquierdo, NodoArbol derecho) {
         this.dato = dato;
         this.izquierdo = izquierdo;
         this.derecho = derecho;
@@ -20,7 +20,7 @@ class NodoArbol {
         return dato;
     }
 
-    public void setDato(int dato) {
+    public void setDato(char dato) {
         this.dato = dato;
     }
 

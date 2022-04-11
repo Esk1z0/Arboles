@@ -9,11 +9,11 @@ public class Arbol {
         raiz = null;
     }
 
-    public Arbol(int dato) {
+    public Arbol(char dato) {
         raiz = new NodoArbol(dato);
     }
 
-    public Arbol(int dato, Arbol izquierdo, Arbol derecho) {
+    public Arbol(char dato, Arbol izquierdo, Arbol derecho) {
         NodoArbol nodoIzq = null;
         NodoArbol nodoDer = null;
         if (izquierdo != null) {
