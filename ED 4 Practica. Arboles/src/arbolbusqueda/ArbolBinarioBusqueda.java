@@ -135,7 +135,17 @@ public class ArbolBinarioBusqueda {
 	// ------------------------------------------------------------------------
 	// TODO 3.2
 	public ListaOrdinalAlumnos aLista() {
-		return null;
+		ListaOrdinalAlumnos lista = new ListaOrdinalAlumnos();
+		lista = aListaRec(raiz, lista);
+		return lista;
+	}
+	private ListaOrdinalAlumnos aListaRec(NodoArbol nodo, ListaOrdinalAlumnos lista){
+		if(nodo != null){
+			lista = aListaRec(nodo.getIzquierdo(), lista);
+			lista.insertar(nodo.getDato());
+			lista = aListaRec(nodo.getDerecho(), lista);
+		}
+		return lista;
 	}
 
 	// ------------------------------------------------------------------------
