@@ -238,7 +238,21 @@ public class Arbol {
     // ------------------------------------------------------------------------
     // TODO 2.5
     public double calcularValor() {
-        return 0.0;
+        double result = 0.0;
+        if(raiz != null) {
+            result = calcularValorRec(raiz);
+        }
+        return result;
+    }
+    private double calcularValorRec(NodoArbol nodo){
+        double valor1 = 0.0, valor2 = 0.0, resultado = 0.0;
+        if (nodo.getIzquierdo() != null) valor1 = calcularValorRec(nodo.getIzquierdo());
+        if (nodo.getDerecho() != null) valor2 = calcularValorRec(nodo.getDerecho());
+        if(nodo.getDato() == '*') resultado = valor1 * valor2;
+        else if (nodo.getDato() == '/') resultado = valor1 / valor2;
+        else if (nodo.getDato() == '+') resultado = valor1 + valor2;
+        else if (nodo.getDato() == '-') resultado = valor1 - valor2;
+        return resultado;
     }
 
 
