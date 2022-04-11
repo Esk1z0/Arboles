@@ -9,14 +9,22 @@ public class Pruebas {
         Arbol tres = new Arbol("29*37-5*+8/");
         Arbol cuatro = new Arbol("9");
 
+        System.out.print("Expresion: ");
         uno.mostrarExpresion();
-        uno.calcularValor();
+        System.out.print("Resultado: " + uno.calcularValor());
+        System.out.println();
+        System.out.print("Expresion: ");
         dos.mostrarExpresion();
-        dos.calcularValor();
+        System.out.print("Resultado: " + dos.calcularValor());
+        System.out.println();
+        System.out.print("Expresion: ");
         tres.mostrarExpresion();
-        tres.calcularValor();
+        System.out.print("Resultado: " + tres.calcularValor());
+        System.out.println();
+        System.out.print("Expresion: ");
         cuatro.mostrarExpresion();
-        cuatro.calcularValor();
+        System.out.print("Resultado: " + cuatro.calcularValor());
+        System.out.println();
     }
 }
 

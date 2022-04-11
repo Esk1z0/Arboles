@@ -223,7 +223,6 @@ public class Arbol {
     // ------------------------------------------------------------------------
     // TODO 2.4
     public void mostrarExpresion() {
-        System.out.print("Expresion: ");
         if (raiz.getIzquierdo() != null) mostrarExpresionRec(raiz.getIzquierdo());
         System.out.print(raiz.getDato());
         if (raiz.getDerecho() != null)mostrarExpresionRec(raiz.getDerecho());
@@ -242,7 +241,6 @@ public class Arbol {
     public double calcularValor() {
         double result = 0.0;
         if(this.raiz != null) result = calcularValorRec(this.raiz);
-        System.out.println("Resultado: " + result);
         return result;
     }
     private double calcularValorRec(NodoArbol nodo){
