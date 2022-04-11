@@ -195,11 +195,40 @@ public class Arbol {
     // ------------------------------------------------------------------------
     // TODO 2.3
     public Arbol(String cadena) {
+        int contador = 0;
+        char[] cad = cadena.toCharArray();
+        Pila pila = new Pila();
+        pila = ArbolRec(pila, cad, contador);
+        this.raiz = pila.desapilar();
+    }
+    private Pila ArbolRec(Pila pila, char[] cad, int contador){
+        if (contador < cad.length) {
+            char aux = cad[contador];
+            NodoArbol nodo = null;
+            if (esDigito(aux)) {
+                nodo.setDato(aux);
+                pila.apilar(nodo);
+                contador++;
+                pila = ArbolRec(pila, cad, contador);
+            } else if (esOperador(aux)) {
+                nodo.setDato(aux);
+                nodo.setDerecho(pila.desapilar());
+                nodo.setIzquierdo(pila.desapilar());
+                pila.apilar(nodo);
+                contador++;
+                pila = ArbolRec(pila, cad, contador);
+            }
+        }
+        return pila;
     }
 
     // ------------------------------------------------------------------------
     // TODO 2.4
     public void mostrarExpresion() {
+
+    }
+    private void mostrarExpresionRec(NodoArbol nodo){
+
     }
 
     // ------------------------------------------------------------------------
