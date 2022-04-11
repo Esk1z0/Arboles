@@ -174,7 +174,39 @@ public class ArbolBinarioBusqueda {
 	// ------------------------------------------------------------------------
 	// TODO 3.4
 	public double getCalificacionMedia(int minimaMat, int maximaMat) {
-		return 0.0;
+		double sumatorio = sumatorioNotasAlumnosRec(raiz, 0.0, minimaMat, maximaMat);
+		int nodos = getNumeroNodosRec(raiz, 0, minimaMat, maximaMat);
+		return sumatorio / nodos;
+	}
+	private int getNumeroNodosRec(NodoArbol nodo, int aux, int minimaMat, int maximaMat){
+		if(nodo != null) {
+			if (nodo.getClave() > minimaMat && nodo.getClave() < maximaMat) {
+				aux++;
+				aux = getNumeroNodosRec(nodo.getIzquierdo(), aux, minimaMat, maximaMat);
+				aux = getNumeroNodosRec(nodo.getDerecho(), aux, minimaMat, maximaMat);
+			}
+			else if (nodo.getClave() < minimaMat) {
+				aux = getNumeroNodosRec(nodo.getDerecho(), aux, minimaMat, maximaMat);
+			} else if (nodo.getClave() > maximaMat) {
+				aux = getNumeroNodosRec(nodo.getIzquierdo(), aux, minimaMat, maximaMat);
+			}
+		}
+		return aux;
+	}
+	private double sumatorioNotasAlumnosRec(NodoArbol nodo, double aux, int minimaMat, int maximaMat){
+		if(nodo != null) {
+			if (nodo.getClave() > minimaMat && nodo.getClave() < maximaMat) {
+				aux += nodo.getDato().getCalificacion();
+				aux = sumatorioNotasAlumnosRec(nodo.getIzquierdo(), aux, minimaMat, maximaMat);
+				aux = sumatorioNotasAlumnosRec(nodo.getDerecho(), aux, minimaMat, maximaMat);
+			}
+			else if (nodo.getClave() < minimaMat) {
+				aux = sumatorioNotasAlumnosRec(nodo.getDerecho(), aux, minimaMat, maximaMat);
+			} else if (nodo.getClave() > maximaMat) {
+				aux = sumatorioNotasAlumnosRec(nodo.getIzquierdo(), aux, minimaMat, maximaMat);
+			}
+		}
+		return aux;
 	}
 
 	// ------------------------------------------------------------------------
