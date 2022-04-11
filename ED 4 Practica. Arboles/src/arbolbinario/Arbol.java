@@ -204,14 +204,12 @@ public class Arbol {
     private Pila ArbolRec(Pila pila, char[] cad, int contador){
         if (contador < cad.length) {
             char aux = cad[contador];
-            NodoArbol nodo = null;
+            NodoArbol nodo = new NodoArbol(aux);
             if (esDigito(aux)) {
-                nodo.setDato(aux);
                 pila.apilar(nodo);
                 contador++;
                 pila = ArbolRec(pila, cad, contador);
             } else if (esOperador(aux)) {
-                nodo.setDato(aux);
                 nodo.setDerecho(pila.desapilar());
                 nodo.setIzquierdo(pila.desapilar());
                 pila.apilar(nodo);
@@ -225,33 +223,41 @@ public class Arbol {
     // ------------------------------------------------------------------------
     // TODO 2.4
     public void mostrarExpresion() {
+        System.out.print("Expresion: ");
         if (raiz.getIzquierdo() != null) mostrarExpresionRec(raiz.getIzquierdo());
         System.out.print(raiz.getDato());
         if (raiz.getDerecho() != null)mostrarExpresionRec(raiz.getDerecho());
+        System.out.println();
     }
     private void mostrarExpresionRec(NodoArbol nodo){
+        if(esOperador(nodo.getDato()))System.out.print("(");
         if (nodo.getIzquierdo() != null) mostrarExpresionRec(nodo.getIzquierdo());
         System.out.print(nodo.getDato());
         if (nodo.getDerecho() != null) mostrarExpresionRec(nodo.getDerecho());
+        if(esOperador(nodo.getDato()))System.out.print(")");
     }
 
     // ------------------------------------------------------------------------
     // TODO 2.5
     public double calcularValor() {
         double result = 0.0;
-        if(raiz != null) {
-            result = calcularValorRec(raiz);
-        }
+        if(this.raiz != null) result = calcularValorRec(this.raiz);
+        System.out.println("Resultado: " + result);
         return result;
     }
     private double calcularValorRec(NodoArbol nodo){
-        double valor1 = 0.0, valor2 = 0.0, resultado = 0.0;
-        if (nodo.getIzquierdo() != null) valor1 = calcularValorRec(nodo.getIzquierdo());
-        if (nodo.getDerecho() != null) valor2 = calcularValorRec(nodo.getDerecho());
-        if(nodo.getDato() == '*') resultado = valor1 * valor2;
-        else if (nodo.getDato() == '/') resultado = valor1 / valor2;
-        else if (nodo.getDato() == '+') resultado = valor1 + valor2;
-        else if (nodo.getDato() == '-') resultado = valor1 - valor2;
+        double resultado = 0.0;
+        if(nodo != null) {
+            char aux = nodo.getDato();
+            double valor1, valor2;
+            valor1 = calcularValorRec(nodo.getIzquierdo());
+            valor2 = calcularValorRec(nodo.getDerecho());
+            if (aux == '*') resultado = valor1 * valor2;
+            else if (aux == '/') resultado = valor1 / valor2;
+            else if (aux == '+') resultado = valor1 + valor2;
+            else if (aux == '-') resultado = valor1 - valor2;
+            else if (esDigito(aux)) resultado = Character.getNumericValue(aux);
+        }
         return resultado;
     }
 

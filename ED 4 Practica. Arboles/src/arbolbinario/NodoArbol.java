@@ -16,7 +16,7 @@ class NodoArbol {
         this.derecho = derecho;
     }
 
-    public int getDato() {
+    public char getDato() {
         return dato;
     }
 
