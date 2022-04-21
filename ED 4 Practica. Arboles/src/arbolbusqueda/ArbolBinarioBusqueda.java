@@ -155,9 +155,11 @@ public class ArbolBinarioBusqueda {
 		Alumno result = getCalificacionMaximaRec(raiz, aux, minimaMat, maximaMat);
 		return result;
 	}
+
+
 	private Alumno getCalificacionMaximaRec(NodoArbol nodo, Alumno aux,int minimaMat, int maximaMat){
 		if(nodo != null) {
-			if (nodo.getClave() > minimaMat && nodo.getClave() < maximaMat) {
+			if (nodo.getClave() >= minimaMat && nodo.getClave() <= maximaMat) {
 				if (nodo.getDato().getCalificacion() > aux.getCalificacion()) {
 					aux = nodo.getDato();
 				}
@@ -253,4 +255,3 @@ public class ArbolBinarioBusqueda {
 	}
 
 }
-//falta meter los comprobantes

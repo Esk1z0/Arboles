@@ -253,7 +253,7 @@ public class Arbol {
             valor2 = calcularValorRec(nodo.getDerecho());
             if(esDigito(aux)){
                 resultado = pasarAEntero(aux);
-            }else {
+            }else if (esOperador(aux)) {
                 switch (aux) {
                     case '*':
                         resultado = valor1 * valor2;

@@ -42,6 +42,7 @@ public class Pruebas {
 		System.out.println("Se ha borrado al alumno con matrícula 1253. Nueva lista de alumnos");
 		a = arbol.aLista();
 		a.mostrar();
+		System.out.println();
 		System.out.println("¿El árbol es equilibrado?" + arbol.esEquilibrado());
 	}
 }
