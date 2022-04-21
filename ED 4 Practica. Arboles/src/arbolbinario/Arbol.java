@@ -172,7 +172,6 @@ public class Arbol {
 
     // ------------------------------------------------------------------------
     // 2.3
-    //falta por hacer el switch
     private int pasarAEntero(char c) {
         return Character.getNumericValue(c);
     }
@@ -252,11 +251,25 @@ public class Arbol {
             double valor1, valor2;
             valor1 = calcularValorRec(nodo.getIzquierdo());
             valor2 = calcularValorRec(nodo.getDerecho());
-            if (aux == '*') resultado = valor1 * valor2;
-            else if (aux == '/') resultado = valor1 / valor2;
-            else if (aux == '+') resultado = valor1 + valor2;
-            else if (aux == '-') resultado = valor1 - valor2;
-            else if (esDigito(aux)) resultado = Character.getNumericValue(aux);
+            if(esDigito(aux)){
+                resultado = pasarAEntero(aux);
+            }else {
+                switch (aux) {
+                    case '*':
+                        resultado = valor1 * valor2;
+                        break;
+                    case '/':
+                        resultado = valor1 / valor2;
+                        break;
+                    case '+':
+                        resultado = valor1 + valor2;
+                        break;
+                    case '-':
+                        resultado = valor1 - valor2;
+                        break;
+                    default:
+                }
+            }
         }
         return resultado;
     }
