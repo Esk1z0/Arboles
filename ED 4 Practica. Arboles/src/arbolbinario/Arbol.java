@@ -172,6 +172,7 @@ public class Arbol {
 
     // ------------------------------------------------------------------------
     // 2.3
+    //falta por hacer el switch
     private int pasarAEntero(char c) {
         return Character.getNumericValue(c);
     }
@@ -238,6 +239,7 @@ public class Arbol {
 
     // ------------------------------------------------------------------------
     // TODO 2.5
+    //NO he usado el switch que si no esta mal
     public double calcularValor() {
         double result = 0.0;
         if(this.raiz != null) result = calcularValorRec(this.raiz);
