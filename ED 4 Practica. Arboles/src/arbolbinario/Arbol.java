@@ -194,31 +194,6 @@ public class Arbol {
 
     // ------------------------------------------------------------------------
     // TODO 2.3
-    /*public Arbol(String cadena) {
-        int contador = 0;
-        char[] cad = cadena.toCharArray();
-        Pila pila = new Pila();
-        pila = ArbolRec(pila, cad, contador);
-        this.raiz = pila.desapilar();
-    }
-    private Pila ArbolRec(Pila pila, char[] cad, int contador){
-        if (contador < cad.length) {
-            char aux = cad[contador];
-            NodoArbol nodo = new NodoArbol(aux);
-            if (esDigito(aux)) {
-                pila.apilar(nodo);
-                contador++;
-                pila = ArbolRec(pila, cad, contador);
-            } else if (esOperador(aux)) {
-                nodo.setDerecho(pila.desapilar());
-                nodo.setIzquierdo(pila.desapilar());
-                pila.apilar(nodo);
-                contador++;
-                pila = ArbolRec(pila, cad, contador);
-            }
-        }
-        return pila;
-    }*/
     public Arbol(String cadena){
         char[] cad = cadena.toCharArray();
         Pila pila = new Pila();
