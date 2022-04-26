@@ -194,7 +194,7 @@ public class Arbol {
 
     // ------------------------------------------------------------------------
     // TODO 2.3
-    public Arbol(String cadena) {
+    /*public Arbol(String cadena) {
         int contador = 0;
         char[] cad = cadena.toCharArray();
         Pila pila = new Pila();
@@ -218,6 +218,24 @@ public class Arbol {
             }
         }
         return pila;
+    }*/
+    public Arbol(String cadena){
+        char[] cad = cadena.toCharArray();
+        Pila pila = new Pila();
+        char aux = ' ';
+        for (int i = 0; i < cad.length; i++) {
+            aux = cad[i];
+            NodoArbol nodo = new NodoArbol(aux);
+            if (esDigito(aux)) {
+                pila.apilar(nodo);
+            }
+            else{
+                nodo.setDerecho(pila.desapilar());
+                nodo.setIzquierdo(pila.desapilar());
+                pila.apilar(nodo);
+            }
+        }
+        this.raiz = pila.desapilar();
     }
 
     // ------------------------------------------------------------------------
